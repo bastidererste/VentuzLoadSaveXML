@@ -3,7 +3,7 @@ VentuzLoadSaveXML
 
 This is a Ventuz3 C# script that loads/saves strings from/to XML files. 
 
-### edit the custom model accordingly:
+### edit the scripts "custom model" accordingly:
 
 ##### inputs
 
