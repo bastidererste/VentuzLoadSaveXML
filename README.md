@@ -18,7 +18,7 @@ This is a Ventuz3 C# script that loads/saves strings from/to XML files.
 
 | type          | name          |
 | ------------- |-------------|
-| string      | loadedText |
+| string array | loadedText |
 
 
 ### connect a string array to the script node:
