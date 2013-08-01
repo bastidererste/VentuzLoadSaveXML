@@ -1,9 +1,10 @@
 VentuzLoadSaveXML
 =================
+Wouldn't it be cool if Ventuz could save data directly to an XML file? Here is a solution, a C# script that saves data into and loads it form an XML file. This C# script is easily extendible to work with integers and floats as well.
 
-This is a Ventuz3 C# script that loads/saves strings from/to XML files. 
+But before you start hacking in the code, you have to edit the "custom model" of your freshly generated C# script node. 
 
-### edit the scripts "custom model" accordingly:
+#### Create the following inputs & outputs:
 
 ##### inputs
 
@@ -21,12 +22,12 @@ This is a Ventuz3 C# script that loads/saves strings from/to XML files.
 | string array | loadedText |
 
 
-### connect a string array to the script node:
+#### connect a string array to the script node:
 
 
 ![alt text](Http://sebastianspiegl.de/VentuzLoadSaveXML_connection.png "VentuzLoadSaveXML_connection.png")
 
-### troubleshooting:
+#### troubleshooting:
 
 |Error    | Solution |
 |---------|-----|
