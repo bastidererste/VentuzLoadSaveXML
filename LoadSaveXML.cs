@@ -6,7 +6,7 @@ using System.Xml;
 public class Script : ScriptBase, System.IDisposable
 {
     
-  // This member  used by the Validate() method to indicate
+  	// This member  used by the Validate() method to indicate
 	// whether the Generate() method should return true or false
 	// during its next execution.
 	private bool changed;
