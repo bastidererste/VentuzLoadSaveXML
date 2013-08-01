@@ -77,7 +77,7 @@ public class Script : ScriptBase, System.IDisposable
 		
 
 		}
-		doc.Save("C:\\Users\\basti\\Desktop\\data.xml");		
+		doc.Save(fileName);			
 		return false;
 		}
 	
@@ -89,7 +89,7 @@ public class Script : ScriptBase, System.IDisposable
 		
 			
 		XmlDocument xmlDoc = new XmlDocument(); //* create an xml document object.
-		xmlDoc.Load("C:\\Users\\basti\\Desktop\\data.xml"); //* load the XML document from the specified file.
+		xmlDoc.Load(fileName); //* load the XML document from the specified file.
 
 		//* Get elements.
 		XmlNodeList Text = xmlDoc.GetElementsByTagName("text"); ;
