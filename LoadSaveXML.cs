@@ -10,11 +10,13 @@ public class Script : ScriptBase, System.IDisposable
 	// whether the Generate() method should return true or false
 	// during its next execution.
 	private bool changed;
+	//create a temporary array
+	// See here why temporary arrays are needed: http://sebastianspiegl.de/?q=Working-with-matrices-and-arrays-in-Ventuz-C%23-scripts%20
 	string[] _loadedText;
 	// This Method is called if the component is loaded/created.
 	public Script()
 	{
-	
+
 
 		// Note: Accessing input or output properties from this method
 		// will have no effect as they have not been allocated yet.
@@ -30,8 +32,8 @@ public class Script : ScriptBase, System.IDisposable
 	{
 		// Remember: set changed to true if any of the output 
 		// properties has been changed, see Generate()
-		
-	
+
+
 	}
     
 	// This Method is called every time before a frame is rendered.
@@ -42,13 +44,15 @@ public class Script : ScriptBase, System.IDisposable
 	//               values really have been changed.
 	public override bool Generate()
 	{
-		
+
+		// assaign temp array to the output array.
+		// See here why temporary arrays are needed: http://sebastianspiegl.de/?q=Working-with-matrices-and-arrays-in-Ventuz-C%23-scripts%20
 		loadedText = _loadedText;
 
 
-		
+
 		changed = true;
-		
+
 		if (changed)
 		{
 			changed = false;
@@ -57,57 +61,67 @@ public class Script : ScriptBase, System.IDisposable
 
 		return false;
 	}
-	
+
 	// This Method is called if the function/method save is invoked by the user or a bound event.
 	// Return true, if this component has to be revalidated!
 	public bool Onsave(int arg)
 	{
-		
+
 		XmlDocument doc = new XmlDocument();
+		//create the basic structure of the XML
 		doc.LoadXml("<inputs></inputs>");
-		
-		//element1
+
+		//get each element in the array that needs to be saved
 		foreach (string s in textToSave)
 		{
-		XmlElement Text = doc.CreateElement("text");
-		Text.InnerText = Convert.ToString(s);
 
-		
-		doc.DocumentElement.AppendChild(Text);
-		
+			//create a text node per array element
+			XmlElement Text = doc.CreateElement("text");
+			//fill it with array element data 
+			Text.InnerText = Convert.ToString(s);
+			//append node to the XML base document
+			doc.DocumentElement.AppendChild(Text);
+
 
 		}
-		doc.Save(fileName);			
+		//save document
+		doc.Save(fileName);
+
 		return false;
 		}
-	
+
 	// This Method is called if the function/method load is invoked by the user or a bound event.
 	// Return true, if this component has to be revalidated!
 	public bool Onload(int arg)
 	{
-		
-		
-			
+
+
+
 		XmlDocument xmlDoc = new XmlDocument(); //* create an xml document object.
+		//load XML document
 		xmlDoc.Load(fileName); //* load the XML document from the specified file.
 
-		//* Get elements.
-		XmlNodeList Text = xmlDoc.GetElementsByTagName("text"); ;
+		//Get all nodes with thw name "text".
+		XmlNodeList Text = xmlDoc.GetElementsByTagName("text");
+		//create a temp array the size of nodes count
 		_loadedText = new string[Text.Count];
-		//* Display the results.
-		
+
+
+		//create an indexer
 		int i = 0;
+
+		//get each element in the node 
 		foreach (XmlNode s in Text)
 		{
-			
+			//assign each node content to the temp array at position i
 			_loadedText[i] = s.InnerText;
-			// _loadedText = new string[]{ "sjdfhjsdhfkjsdhf", "asdgasdg" };
+			//increment indexer i
 			i++;
-			
+
 		}
 
-		
-		
+
+
 		changed = true;
 		return false;
 	}
