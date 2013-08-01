@@ -13,7 +13,7 @@ public class Script : ScriptBase, System.IDisposable
 	//create a temporary array
 	// See here why temporary arrays are needed: http://sebastianspiegl.de/?q=Working-with-matrices-and-arrays-in-Ventuz-C%23-scripts%20
 	string[] _loadedText;
-	// This Method is called if the component is loaded/created.
+	// This method is called if the component is loaded/created.
 	public Script()
 	{
 
@@ -110,7 +110,7 @@ public class Script : ScriptBase, System.IDisposable
 		//create an indexer
 		int i = 0;
 
-		//get each element in the node 
+		//get each node in the nodeList
 		foreach (XmlNode s in Text)
 		{
 			//assign each node content to the temp array at position i
